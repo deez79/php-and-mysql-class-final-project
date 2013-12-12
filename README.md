@@ -1,14 +1,14 @@
 php-and-mysql-class-final-project
 =================================
 
-########################################
-#
-#	PHP and MySQL class final project
-#		Derek Schulman 
-#		December 2013
-#		code@derekisthecoolest.com
-#
-########################################
+################################################################
+
+	PHP and MySQL class final project
+		Derek Schulman 
+		December 2013
+		code@derekisthecoolest.com
+
+################################################################
 
 Requirements:
 	1. Create a database with at least 3 tables
