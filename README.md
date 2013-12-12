@@ -11,11 +11,13 @@ php-and-mysql-class-final-project
 ################################################################
 
 Requirements:
+
 	1. Create a database with at least 3 tables
 	2. Call to the database
 	3. Use Sessions or Cookies
 
 Idea:
+
 	Create a database of James Bond Films, actors, directors,
 	and characters	(probably not fully complete).  
 	Create a user login page.
@@ -24,6 +26,7 @@ Idea:
 	Create a message board area that populates from the db.	
 
 Source:
+
 	Will be relying heavily on PHP and MySQL for Dynamic Web Sites,
 		Fourth Edition by Larry Ullman.  Chapter 17 deals with creating
 		a message board, and chapter 18 deals with logins and
