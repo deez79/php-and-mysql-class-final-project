@@ -4,9 +4,7 @@
 $page_title = "007 Archive";
 include ('includes/header.php');
 
-
-
-
+//whatever will go on the index page starts below here!
 ?>
 
 
