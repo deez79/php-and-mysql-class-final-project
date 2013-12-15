@@ -16,7 +16,6 @@
 ##############################################################
 
 
-
 function redirect_user ($page = 'index.php'){
 ##############################################################
 #
@@ -96,3 +95,4 @@ function check_login($dbc, $email = '', $pass = ''){
 	//Return false and the errors:
 	return array(false, $errors);
 }  //End of check_login() function.
+?>

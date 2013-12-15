@@ -22,6 +22,16 @@ PRIMARY KEY (user_id)
 
 ###################################################
 #
+# 	Insert first users into database
+#
+###################################################
+
+INSERT INTO agent VALUES (null, 'Dutchess', 'Sterling', 'Archer', 'worldsGreatest@issis.gov', sha1('lamePassWord'));
+
+INSERT INTO agent VALUES (007, 'James', 'James', 'Bond', 'superSpy@mi6.gov.uk', sha1('lamePassWord'));
+
+###################################################
+#
 #
 #	Create user for this database
 #		limit privillages to:
