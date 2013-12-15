@@ -9,6 +9,7 @@
 #			setcookie() lines!
 #
 #							(from chapter 12 script 12.3)
+#							(from chapter 12 script 12.5)
 #########################################################
 
 //Check if the form has been submitted:
