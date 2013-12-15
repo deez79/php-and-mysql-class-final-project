@@ -8,7 +8,7 @@
 <body>
 	<div class="header">
 		<h1>007 Archive</h1>
-		<h2>SQL, not stirred</h2>
+		<h2>MySQL, not stirred</h2>
 	</div> <!--End header-->
 	<div class="nav">
 		<ul>
@@ -17,8 +17,8 @@
 			<li><a href=""></li>
 			<li><a href=""></li>
 			<li><?php //Create a login/logout link:
+				//checks to see if cookie is set, AND that you are not on the logout.php page
 				if ((isset($_COOKIE['user_id'])) && (basename($_SERVER['PHP_SELF']) !='logout.php')) {
-
 					echo '<a href="logout.php">Logout</a>';
 				} else{
 					echo '<a href="login.php">Login</a>';

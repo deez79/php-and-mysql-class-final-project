@@ -3,7 +3,7 @@
 #################################################
 #
 # 	The user is redirected here from login.php
-#
+# 		This will likely be changed in the future.
 #
 #
 #					(from chapter 12 script 12.4)
