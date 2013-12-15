@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		//Set the cookies
 		$user = $data['user_id']; //create user variable, so that user_id can be encrypted.
-		setcookie('user_id', sha1('$user'));
+		setcookie('user_id', sha1('$user'), time()+3600, "/", '', 0, 0); //added more security to cookie
 		//setcookie('SHA1 user_id', sha1('$data["user_id"]'));  //for some reason, I can't get this cookie to show up.  
-		setcookie('first_name', $data['first_name']);
+		setcookie('first_name', $data['first_name'], time()+3600, "/", '', 0, 0); //added more security to cookie
 
 		//redirect to loggedin.php
 		redirect_user('loggedin.php');
