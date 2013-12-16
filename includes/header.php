@@ -9,6 +9,8 @@
 	//start the session:
 	session_start();
 
+		//set flag variable to ensure somepages can't be called directly. (post_form, I'm looking at you)
+		$blue = 'blue';
 	//for testing purposes
 	//$_SESSION['user_id'] = 1;
 	//for logging out
@@ -46,14 +48,13 @@
 					echo '<li><a href="post.php">New Thread</a></li>';
 				}
 				//add a log out link
-
+				
 				//checks to see if cookie is set, AND that you are not on the logout.php page
 				if ((isset($_COOKIE['user_id'])) && (basename($_SERVER['PHP_SELF']) !='logout.php')) {
 					echo '<a href="logout.php">Logout</a>';
 				} else{
 					echo '<a href="login.php">Login</a>';
 				}
-				//echo '<li><a href="logout.php">Logout</a></li>' . "\n";
 			} else {
 				//Register and login
 				echo '<li><a href="login.php">Login</a></li>' . "\n";
