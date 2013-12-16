@@ -5,12 +5,13 @@
 	<title><?php echo $page_title; ?></title>
 	<link rel="stylesheet" href="/css/bootstrap.css" type="text\css" />
 	<?php //most of this php is from 17.1 (edited for my needs)
+	//this .bak is for $_SESSION login.  I am using cookies for now.
 
 	//start the session:
 	session_start();
 
 	//for testing purposes
-	//$_SESSION['user_id'] = 1;
+	$_SESSION['user_id'] = 1;  //this is a default user_id.  no actual login.
 	//for logging out
 	//$_SESSION = array();
 
@@ -40,7 +41,7 @@
 			<li><a href="index.php">007 Archive</a></li>
 			<li><a href="forum.php">Forum Home</a></li>
 			<?php //Display links based on login status:
-			if (isset($_COOKIE['user_id'])) { 
+			if (isset($_SESSION['user_id'])) { 
 				//If this is the forum page, add a link for posting threads:
 				if (basename($_SERVER['PHP_SELF']) == 'forum.php') {
 					echo '<li><a href="post.php">New Thread</a></li>';
@@ -74,6 +75,19 @@
 
 			?>
 
+			<!-- //this is cookie based validation.
+			<li><a href=""></a></li>
+			<li><?php //Create a login/logout link:
+			/*
+				//checks to see if cookie is set, AND that you are not on the logout.php page
+				if ((isset($_COOKIE['user_id'])) && (basename($_SERVER['PHP_SELF']) !='logout.php')) {
+					echo '<a href="logout.php">Logout</a>';
+				} else{
+					echo '<a href="login.php">Login</a>';
+				}
+			*/
+			?></li> -->
+			
 		</ul>
 	</div>	<!--End navigation-->
 	<div id="content"><!--start of main content of pages.  End of this div will start at footer.php-->
