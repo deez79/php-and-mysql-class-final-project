@@ -11,22 +11,32 @@
 
 		//set flag variable to ensure somepages can't be called directly. (post_form, I'm looking at you)
 		$blue = 'blue';
+
+	
 	//for testing purposes
 	//$_SESSION['user_id'] = 1;
 	//for logging out
 	//$_SESSION = array();
 
-	//connect to the DB
-	require ('database/mysqli_connect.php');
+
 
 	//check for forum ID
 	// 	then store forum ID in the session:
 	if ( isset($_GET['fid']) && filter_var($_GET['fid'], FILTER_VALIDATE_INT, array('min_range' => 1))) {
 		$_SESSION['fid'] = $_GET['fid'];
+		//debugging
+		echo 'Session id is set by GET'; 
+		$forumSession = $_SESSION['fid'];
+		echo $forumSession;
+
 	} else {
 		$_SESSION['fid'] = 1; // Default
+		//debugging
+		echo 'Session id is set as default...1';
 	}
 
+	//connect to the DB
+	require ('database/mysqli_connect.php');
 
 
 	?>
@@ -72,6 +82,9 @@
 				if (mysqli_num_rows($r) > 0) {
 					while ($menu_row = mysqli_fetch_array($r, MYSQLI_NUM)) {
 						echo "<option value=\"$menu_row[0]\">$menu_row[1]</option>\n";
+							if ($menu_row == $_SESSION['fid']) {
+								echo 'selected="selected"';
+							} //end if for selected
 					} //end while statement
 				} //end if rows > 0
 				mysqli_free_result($r);
