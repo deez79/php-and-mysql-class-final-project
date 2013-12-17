@@ -6,7 +6,7 @@
 #
 ############################################
 
-CHARSET utf8;
+#CHARSET utf8;  //This doesn't work.  Comment it out
 
 CREATE DATABASE bond CHARACTER SET utf8;
 USE bond;
