@@ -25,27 +25,11 @@
     //then store forum ID in the session:
     if ( isset($_GET['fid']) && filter_var($_GET['fid'], FILTER_VALIDATE_INT, array('min_range' => 1))) {
             $_SESSION['fid'] = $_GET['fid'];
-            //debugging
-            echo 'Session id is set by GET' . "\n"; 
-            $forum = $_SESSION['fid'];
-            echo $forum . "\n";
-
-      //This is currently off for debugging, although, it may not need to be on.
     } elseif (!isset($_SESSION['fid'])) {
             $_SESSION['fid'] = 1; // Default
-            //debugging
-            echo "Session id is set as default...1 \n";
-            $forum = $_SESSION['fid'];
-            echo $forum;
     }
 
-    //debugging
-	echo "\n" . 'outside the loop.  $forum is equal to ' . $forum;
-	echo 'test';
-	echo "\n" . 'session user id is ' . $user;
-
-
-	//connect to the DB
+    //connect to the DB
 	require ('database/mysqli_connect.php');
 
 
