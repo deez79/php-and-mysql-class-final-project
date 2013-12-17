@@ -26,13 +26,15 @@ if (isset($_COOKIE['user_id'])) {
 	echo '<form action="post.php" method="post" accept-charset="utf-8">';
 
 	//if on read.php
-	if(isset($tid) && tid) {
+	if(isset($tid) && $tid) { //$tid after and...
+
 
 		//print caption:
 		echo '<h3> Post a Reply </h3>';
 
 		//add the thread id as a hidden input:
 		echo '<input name="tid" type="hidden" value="' . $tid .'" />';
+
 	} else { //New Thread
 
 		//Print a caption:
@@ -40,8 +42,10 @@ if (isset($_COOKIE['user_id'])) {
 
 		//create a subject input:
 		echo '<p><em>Subject</em>: <input name="subject" type="text" size="60" maxlength="100" ';
+
 			//Check for existing value:
 			if(isset($subject)) {
+
 				echo "value=\"$subject\" ";
 			}
 		echo '/></p>';

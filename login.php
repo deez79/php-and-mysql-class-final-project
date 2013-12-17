@@ -33,8 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//setcookie('SHA1 user_id', sha1('$data["user_id"]'));  //for some reason, I can't get this cookie to show up.  
 		setcookie('first_name', $data['first_name'], time()+3600, "/", '', 0, 0); //added more security to cookie
 
+		//start a session to save $user
+		session_start();
+		$_SESSION['user_id'] = $data['user_id'];
+		
+
 		//redirect to loggedin.php
 		redirect_user('loggedin.php');
+
+
 
 	} else {
 

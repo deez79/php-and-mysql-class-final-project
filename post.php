@@ -12,7 +12,7 @@
 //include the header
 include ('includes/header.php');
 
-if ($_SERVER['REQEST_METHOD'] == 'POST') { //handle the form
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { //handle the form
 	//Validate thread ID ($tid), which may not be present:
 	if (isset($_POST['tid']) && filter_var($_POST['tid'], FILTER_VALIDATE_INT, array('min_range' => 1)) ){
 		$tid = $_POST['tid'];
@@ -43,8 +43,8 @@ if ($_SERVER['REQEST_METHOD'] == 'POST') { //handle the form
 		//add the message to the database
 
 		if (!$tid) {
-			$q = "INSERT INTO threads (forum_id, user_id, subject) VALUES ({$_SESSION['fid']}, {$_COOKIE['user_id']}, '" . mysqli_real_escape_string($dbc, $subject) . "')";
-			$r = mysqli_query($r);
+			$q = "INSERT INTO threads (forum_id, user_id, subject) VALUES ({$_SESSION['fid']}, {$_SESSION['user_id']}, '" . mysqli_real_escape_string($dbc, $subject) . "')";
+			$r = mysqli_query($dbc, $q);
 			if (mysqli_affected_rows($dbc) == 1) {
 				$tid = mysqli_insert_id($dbc);
 			} else {
@@ -53,7 +53,7 @@ if ($_SERVER['REQEST_METHOD'] == 'POST') { //handle the form
 		} // No $tid
 
 		if($tid) { //Add this to the replies table
-			$q = "INSERT INTO posts (thread_id, user_id, message, posted_on) VALUES ($tid, {$_COOKIE['user_id']}, '" . mysqli_real_escape_string($dbc, $body) . "', UTC_TIMESTAMP())";
+			$q = "INSERT INTO posts (thread_id, user_id, message, posted_on) VALUES ($tid, {$_SESSION['user_id']}, '" . mysqli_real_escape_string($dbc, $body) . "', UTC_TIMESTAMP())";
 			$r = mysqli_query($dbc, $q);
 			if (mysqli_affected_rows($dbc) == 1) {
 				echo '<p>Your post has been entered.</p>';

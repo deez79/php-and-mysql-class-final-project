@@ -23,9 +23,9 @@ if (isset($_GET['tid']) && filter_var($_GET['tid'], FILTER_VALIDATE_INT, array('
 	$posted = 'p.posted_on';
 
 	//run query
-	$q = "SELECT t.subject, p.message, username, DATE_FORMAT($posted, '%e-%b-%y %l:%i %p') AS posted FROM threads AS t LEFT JOIN posts AS p USING (thread_id) INNER JOIN users AS u ON p.user_id = u.user_id WHERE t.thread_id = $tid ORDER BY p.posted_on ASC"; //seriously.... these queries are insane.
+	$q = "SELECT t.subject, p.message, username, DATE_FORMAT($posted, '%e-%b-%y %l:%i %p') AS posted FROM threads AS t LEFT JOIN posts AS p USING (thread_id) INNER JOIN agent AS u ON p.user_id = u.user_id WHERE t.thread_id = $tid ORDER BY p.posted_on ASC"; //seriously.... these queries are insane.
 	$r = mysqli_query($dbc, $q);
-	if (!(mysqli_num_row($r) > 0)) {
+	if (!(mysqli_num_rows($r) > 0)) {
 		$tid = FALSE; //invalid thread ID!
 	}
 } //End of isset($_GET['tid']) IF.

@@ -3,48 +3,50 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo $page_title; ?></title>
-	<link rel="stylesheet" href="css/bootstrap.css" type="text\css" />
+	<link rel="stylesheet" href="/css/bootstrap.css" type="text\css" />
 	<?php //most of this php is from 17.1 (edited for my needs)
 
 	//start the session:
 	session_start();
 
-	//set flag variable to ensure somepages can't be called directly. (post_form, I'm looking at you)
-	$blue = 'blue';
+		//set flag variable to ensure somepages can't be called directly. (post_form, I'm looking at you)
+		$blue = 'blue';
 
-	//set $user to Session user_id if it exists
-	if ( isset($_SESSION['user_id'])){
-		$user = $_SESSION['user_id'];
-	} else {
-		$_SESSION['user_id'] = 1;
-		$user = 'nobody';
-	}
+	//set $_SESSION['fid'] to variable
+	$forum = $_SESSION['fid'];	
 	
-	
+	//for testing purposes
+	//$_SESSION['user_id'] = 1;
+	//for logging out
+	//$_SESSION = array();
+
+
+
 	//check for forum ID
-    //then store forum ID in the session:
-    if ( isset($_GET['fid']) && filter_var($_GET['fid'], FILTER_VALIDATE_INT, array('min_range' => 1))) {
-            $_SESSION['fid'] = $_GET['fid'];
-            //debugging
-            echo 'Session id is set by GET' . "\n"; 
-            $forum = $_SESSION['fid'];
-            echo $forum . "\n";
+	if ($_SESSION['fid'] != 1){ //if $_SESSION exists.  This is trouble shooting.
+		// 	then store forum ID in the session:
+		//if ( isset($_GET['fid']) && filter_var($_GET['fid'], FILTER_VALIDATE_INT, array('min_range' => 1))) {
+		if ( isset($_SESSION['fid'])) {
+			$_SESSION['fid'] = $_GET['fid'];
+			//debugging
+			echo 'Session id is set by GET'; 
+			$forumSession = $_SESSION['fid'];
+			echo $forumSession . "\n";
+			echo 'the $forum variable is set to ' . $forum;
 
-      //This is currently off for debugging, although, it may not need to be on.
-    } elseif (!isset($_SESSION['fid'])) {
-            $_SESSION['fid'] = 1; // Default
-            //debugging
-            echo "Session id is set as default...1 \n";
-            $forum = $_SESSION['fid'];
-            echo $forum;
-    }
-
-    //debugging
+		} else {
+			$_SESSION['fid'] = 1; // Default
+			//debugging
+			echo 'Session id is set as default...1';
+			echo 'the $forum variable is set to ' . $forum;
+		}
+	echo 'Session fid is transfered. ';
+	$forumSession = $_SESSION['fid'];
+	echo $forumSession;	
+	/*} else {
+		$_SESSION['fid'] = 2; //lets force a session maybe.*/
+	}
 	echo "\n" . 'outside the loop.  $forum is equal to ' . $forum;
-	echo 'test';
-	echo "\n" . 'session user id is ' . $user;
-
-
 	//connect to the DB
 	require ('database/mysqli_connect.php');
 
@@ -84,7 +86,7 @@
 			//For Choosing a forum
 			echo '<form action="forum.php" method="get">
 			<li><select name="fid">
-				<option value="0">' . "Forums" . '</option>' . "\n";
+				<option value="0">' . "Forums" . '</option>';
 
 				//Retrieve all Forum Names:
 				$q = "SELECT forum_id, forum_name FROM forum ORDER BY forum_id ASC";
@@ -108,3 +110,8 @@
 		</ul>
 	</div>	<!--End navigation-->
 	<div id="content"><!--start of main content of pages.  End of this div will start at footer.php-->
+		
+
+
+	
+	

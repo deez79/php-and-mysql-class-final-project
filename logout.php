@@ -30,5 +30,5 @@ include ('includes/header.php');
 echo "<h1>Logged Out!</h1>
 <p>You are now logged out, {$_COOKIE['first_name']}!</p>";
 
-include('inlcudes/footer.php');
+include('includes/footer.php');
 ?>

@@ -22,7 +22,7 @@ $last = 'p.posted_on';
 //The query for retrieving all the threads in this forum, along with
 // 	the original user, when the thread was first posted, when it was
 // 	last replied to, and how many replies it had:
-$q = "SELECT t.thread_id, t.subject, username, COUNT(post_id) - 1 AS responses, MAX(DATE_FORMAT($last, '%e-%b-%y %l:%i %p')) AS last, MIN(DATE_FORMAT($first, '%e-%b-%y %l:%i %p')) AS first FROM threads AS t INNER JOIN posts AS p USING (thread_id) INNER JOIN users AS u ON t.user_id = u.user_id WHERE t.forum_id = {$_SESSION['fid']} GROUP BY (p.thread_id) ORDER BY last DESC"; //this insane query is straight from the book, with me swapping fid for lid and t.forum_id for t.lang_id.  Seriously...  This query is bananas.
+$q = "SELECT t.thread_id, t.subject, username, COUNT(post_id) - 1 AS responses, MAX(DATE_FORMAT($last, '%e-%b-%y %l:%i %p')) AS last, MIN(DATE_FORMAT($first, '%e-%b-%y %l:%i %p')) AS first FROM threads AS t INNER JOIN posts AS p USING (thread_id) INNER JOIN agent AS u ON t.user_id = u.user_id WHERE t.forum_id = {$_SESSION['fid']} GROUP BY (p.thread_id) ORDER BY last DESC"; //this insane query is straight from the book, with me swapping fid for lid and t.forum_id for t.lang_id.  Seriously...  This query is bananas.
 
 $r = mysqli_query($dbc, $q);
 
