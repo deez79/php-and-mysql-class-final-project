@@ -29,13 +29,13 @@ $r = mysqli_query($dbc, $q);
 if (mysqli_num_rows($r) > 0) {
 
 	//Create table... Considering trying not to use tables, but don't really have time to deal with the change.
-	echo '<table width="100" boarder="0" cellspacing="2" cellpadding="2" align="center">
+	echo '<table width="100%" boarder="0" cellspacing="2" cellpadding="2" align="center">
 		<tr>
-			<td align="left" width="50%><em>Subject</em>:</td>
-			<td align="left" width="20%><em>Posted By</em>:</td>
-			<td align="center" width="10%><em>Posted On</em>:</td>
-			<td align="center" width="10%><em>Replies</em>:</td>
-			<td align="center" width="10%><em>Latest Reply</em>:</td>
+			<td align="left" width="50%"><em>Subject</em>:</td>
+			<td align="left" width="20%"><em>Posted By</em>:</td>
+			<td align="center" width="10%"><em>Posted On</em>:</td>
+			<td align="center" width="10%"><em>Replies</em>:</td>
+			<td align="center" width="10%"><em>Latest Reply</em>:</td>
 		</tr>';
 
 	//Fetch Each Thread:
